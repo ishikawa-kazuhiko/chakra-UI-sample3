@@ -1,2 +1,2 @@
-# chakra-UI-sample3
+# Chakra-UI-sample
 Created with CodeSandbox
