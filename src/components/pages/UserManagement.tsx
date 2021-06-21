@@ -20,6 +20,7 @@ import { memo, useCallback, useEffect, VFC } from "react";
 
 import { UserCard } from "../organisms/user/UserCard";
 import { useAllUsers } from "../../hooks/useAllUsers";
+import { UserDetailModal } from "../organisms/user/UserDetailModal";
 
 export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,38 +51,7 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        autoFocus={false}
-        // motionPreset="slideInBottom"
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>ユーザー詳細</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody mx={4}>
-            <Stack spacing={4}>
-              <FormControl>
-                <FormLabel>名前</FormLabel>
-                <Input value="山田太郎" isReadOnly />
-              </FormControl>
-              <FormControl>
-                <FormLabel>フルネーム</FormLabel>
-                <Input value="山田太郎" isReadOnly />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Mail</FormLabel>
-                <Input value="aaa@aaa.co.jp" isReadOnly />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Tel</FormLabel>
-                <Input value="000-0000-9999" isReadOnly />
-              </FormControl>
-            </Stack>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <UserDetailModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 });
