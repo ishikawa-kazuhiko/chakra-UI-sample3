@@ -12,6 +12,7 @@ import { UserCard } from "../organisms/user/UserCard";
 import { UserDetailModal } from "../organisms/user/UserDetailModal";
 import { useAllUsers } from "../../hooks/useAllUsers";
 import { useSelectUser } from "../../hooks/useSelectUser";
+import { useLoginUser } from "../../hooks/useLoginUser";
 
 export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -19,7 +20,12 @@ export const UserManagement: VFC = memo(() => {
   const { getUsers, users, loading } = useAllUsers();
   //useSelectedUserの返却値を渡す
   const { onSelectUser, selectedUser } = useSelectUser();
-  console.log(selectedUser);
+  //useLoginUserのexport constがloginUserだから
+  const { loginUser } = useLoginUser();
+
+  // console.log(selectedUser);
+  console.log("LoginUser:");
+  console.log(loginUser);
 
   //初期マウント時にで１回だけgetUsersが実行
   useEffect(() => getUsers(), []);
